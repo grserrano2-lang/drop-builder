@@ -105,3 +105,20 @@ CREATE TABLE IF NOT EXISTS ingest_log (
   payload      JSONB,
   recibido_en  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- --- TAREAS (backlog Kanban del CRM; reemplaza a ClickUp) ----------------
+CREATE TABLE IF NOT EXISTS tareas (
+  id           TEXT PRIMARY KEY,
+  tienda_id    TEXT REFERENCES tiendas(id) ON DELETE SET NULL,  -- opcional
+  titulo       TEXT NOT NULL,
+  descripcion  TEXT,
+  estado       TEXT NOT NULL DEFAULT 'backlog'
+               CHECK (estado IN ('backlog', 'en_progreso', 'hecho')),
+  prioridad    TEXT NOT NULL DEFAULT 'media'
+               CHECK (prioridad IN ('alta', 'media', 'baja')),
+  origen       TEXT NOT NULL DEFAULT 'humano'
+               CHECK (origen IN ('humano', 'bot')),
+  creada_en    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_tareas_estado ON tareas(estado);
+CREATE INDEX IF NOT EXISTS idx_tareas_tienda ON tareas(tienda_id);

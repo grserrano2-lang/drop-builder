@@ -70,3 +70,16 @@ export interface Alerta {
   resuelta: boolean;
   creada_en: string;
 }
+
+export type EstadoTarea = "backlog" | "en_progreso" | "hecho";
+export type PrioridadTarea = "alta" | "media" | "baja";
+export interface Tarea {
+  id: string;
+  tienda_id: string | null;
+  titulo: string;
+  descripcion: string | null;
+  estado: EstadoTarea;
+  prioridad: PrioridadTarea;
+  origen: "humano" | "bot";
+  creada_en: string;
+}

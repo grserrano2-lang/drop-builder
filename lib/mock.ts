@@ -11,6 +11,7 @@ import type {
   VentaAtribuida,
   EventoEmbudo,
   Alerta,
+  Tarea,
 } from "@/lib/types";
 
 export const tiendas: Tienda[] = [
@@ -92,4 +93,13 @@ export const alertas: Alerta[] = [
   { id: 2, tienda_id: "t3", tipo: "pico_chargebacks", severidad: "critica", mensaje: "Ratio de chargebacks por encima del 1% en Tienda Gamma.", resuelta: false, creada_en: "2026-06-06" },
   { id: 3, tienda_id: "t3", tipo: "stock_agotado", severidad: "critica", mensaje: "Producto Gamma 1 agotado (stock 0).", resuelta: false, creada_en: "2026-06-05" },
   { id: 4, tienda_id: "t2", tipo: "caida_conversion", severidad: "info", mensaje: "Conversión de Tienda Beta por debajo de la media del holding.", resuelta: true, creada_en: "2026-06-03" },
+];
+
+export const tareas: Tarea[] = [
+  { id: "tk1", tienda_id: "t1", titulo: "Configurar SPF/DKIM/DMARC del dominio", descripcion: "Cimiento de la entregabilidad de email (#51).", estado: "backlog", prioridad: "alta", origen: "bot", creada_en: "2026-06-09" },
+  { id: "tk2", tienda_id: "t1", titulo: "Investigar proveedor dropshipping ~7 días", descripcion: "Shortlist con margen y check de IP (#A).", estado: "en_progreso", prioridad: "alta", origen: "humano", creada_en: "2026-06-09" },
+  { id: "tk3", tienda_id: null, titulo: "Borradores de páginas legales", descripcion: "Privacidad, cookies, términos, envíos, devoluciones (#92).", estado: "hecho", prioridad: "alta", origen: "bot", creada_en: "2026-06-08" },
+  { id: "tk4", tienda_id: null, titulo: "Banco de 5 ángulos UGC + hooks", descripcion: "Guiones por ángulo (#31, #32).", estado: "backlog", prioridad: "media", origen: "bot", creada_en: "2026-06-09" },
+  { id: "tk5", tienda_id: "t2", titulo: "Spec de tracking (Pixel+CAPI, GA4)", descripcion: "dataLayer y atribución por creador (#71-77).", estado: "backlog", prioridad: "media", origen: "bot", creada_en: "2026-06-09" },
+  { id: "tk6", tienda_id: null, titulo: "Plantilla clonable de tienda", descripcion: "Alta de tienda nueva en 1 paso (#88).", estado: "backlog", prioridad: "baja", origen: "bot", creada_en: "2026-06-09" },
 ];

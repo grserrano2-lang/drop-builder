@@ -5,7 +5,7 @@
 import { MOCK, sql } from "@/lib/db";
 import * as mock from "@/lib/mock";
 import { round2, tasasEmbudo, roiCreador } from "@/lib/metrics";
-import type { Tienda, Producto, Alerta } from "@/lib/types";
+import type { Tienda, Producto, Alerta, Tarea } from "@/lib/types";
 
 export interface ResumenTienda {
   tienda: Tienda;
@@ -141,4 +141,10 @@ export async function getEmbudo() {
 export async function getAlertas(): Promise<Alerta[]> {
   if (MOCK) return [...mock.alertas].sort((a, b) => Number(a.resuelta) - Number(b.resuelta));
   return sql<Alerta>`SELECT * FROM alertas ORDER BY resuelta ASC, creada_en DESC`;
+}
+
+export async function getTareas(): Promise<Tarea[]> {
+  if (MOCK) return mock.tareas;
+  return sql<Tarea>`SELECT id, tienda_id, titulo, descripcion, estado, prioridad, origen, creada_en
+                    FROM tareas ORDER BY creada_en DESC`;
 }

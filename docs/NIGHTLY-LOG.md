@@ -3,10 +3,10 @@
 ## Resumen ejecutivo (lo leerás por la mañana)
 - **Estado global:** 🟢 verde (build OK, 18/18 tests).
 - **Rama:** `feat/nightly` (solo commits locales, sin push).
-- **Completado esta noche:** #81 **tareas Kanban del CRM**; #87 **resumen diario**;
-  **spec-base44 de la Tienda 1** (plano de construcción listo para ti).
-- **En curso / siguiente:** specs de afiliados y tracking, copy de emails #52-60,
-  briefs UGC #31-33, integraciones mock #82/#84.
+- **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**;
+  **specs Base44 + afiliados** de la Tienda 1.
+- **En curso / siguiente:** spec de tracking, copy de emails #52-60, briefs UGC
+  #31-33, integraciones mock #82/#84. (Auditoría puntual prevista en el ciclo 5.)
 - **Bloqueos (pendiente humano):** nada que me frene; lo irreversible (cuentas,
   pagos, dominios, Neon) queda anotado para ti.
 - **Ideas creativas top:** (se irán añadiendo en las auditorías).
@@ -44,3 +44,13 @@
   build verde, 18/18 tests).
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** prepara el camino para las specs de afiliados y tracking (próximos ciclos).
+
+### Ciclo 4 — plataforma-afiliados Tienda 1 · 🟢 verde (docs)
+- **Qué hice:** `specs/afiliados-tienda1.md` — modelo de datos (Creador/Venta/
+  Liquidación), páginas (registro, dashboard #24, admin, página pública #23
+  recomendada), atribución código+UTM (#73), bot de captación legítimo (#22),
+  acuerdo firmado (#21), liquidación semiauto (#29), kit de bienvenida (#26).
+- **Verificación:** docs-only → build no afectado (18/18 tests en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** dejé marcadas como activables las mejoras no aprobadas (#25 tiers,
+  #27 leaderboard) por si Gonzalo las quiere; y recomiendo reconsiderar #23.

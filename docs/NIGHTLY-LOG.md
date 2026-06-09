@@ -91,3 +91,12 @@
 - **Verificación:** docs-only → build no afectado (18/18 en el último verde).
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** listo para activar creadores en cuanto haya marca + producto definidos.
+
+### Ciclo 8 — Copy final de emails Tienda 1 · 🟢 verde (docs)
+- **Qué hice:** `templates/emails/tienda1/emails-copy.md` — copy completo (asunto +
+  cuerpo) de los flujos aprobados #52-60: confirmación, envío+tracking, incidencia,
+  carrito abandonado (3 toques), post-compra/cuidado, reseña incentivada REAL,
+  win-back, aviso de drop y bienvenida. Tono de aficionado, un CTA por email.
+- **Verificación:** docs-only → build no afectado (18/18 en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Recordatorio:** sin SPF/DKIM (#51) estos emails caen en spam; lo repito en el pie.

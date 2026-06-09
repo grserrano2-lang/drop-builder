@@ -158,3 +158,14 @@
 - **Verificación:** `npm test` 24/24 · `npm run build` ✓ · smoke real: `/proveedores`
   → 200 (EU FastKit→bueno, GuangzhouTex→crítico).
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 14 — seed.ts al día + nota de cobertura · 🟢 verde
+- **Hallazgo:** las tests de integración sobre `lib/queries` NO son viables con
+  `node --test` porque queries importa por VALOR con alias `@/` (db, mock, metrics,
+  supplier) y el runtime de strip-types no resuelve el alias (las pure sí, porque sus
+  imports de tipos se borran). Lo dejo documentado en vez de fingir cobertura;
+  alternativa futura: un loader/alias o mover a relativo.
+- **Qué hice:** actualizado `scripts/seed.ts` para sembrar también `tareas`,
+  `proveedores` y `envios` (estaba desfasado respecto al schema y al mock).
+- **Verificación:** `npm run build` ✓ (type-chequea seed.ts) · `npm test` 24/24.
+- **Commit:** checkpoint en `feat/nightly`.

@@ -6,6 +6,7 @@
 import { Pool } from "@neondatabase/serverless";
 import {
   tiendas, productos, creadores, pedidos, ventas_atribuidas, embudoCounts, alertas,
+  tareas, proveedores, envios,
 } from "../lib/mock.ts";
 
 const url = process.env.DATABASE_URL;
@@ -65,6 +66,26 @@ try {
     await pool.query(
       `INSERT INTO alertas (tienda_id,tipo,severidad,mensaje,resuelta) VALUES ($1,$2,$3,$4,$5)`,
       [a.tienda_id, a.tipo, a.severidad, a.mensaje, a.resuelta]
+    );
+  }
+  for (const t of tareas) {
+    await pool.query(
+      `INSERT INTO tareas (id,tienda_id,titulo,descripcion,estado,prioridad,origen) VALUES ($1,$2,$3,$4,$5,$6,$7)
+       ON CONFLICT (id) DO NOTHING`,
+      [t.id, t.tienda_id, t.titulo, t.descripcion, t.estado, t.prioridad, t.origen]
+    );
+  }
+  for (const p of proveedores) {
+    await pool.query(
+      `INSERT INTO proveedores (id,nombre,pais,plazo_prometido_dias) VALUES ($1,$2,$3,$4)
+       ON CONFLICT (id) DO NOTHING`,
+      [p.id, p.nombre, p.pais, p.plazo_prometido_dias]
+    );
+  }
+  for (const e of envios) {
+    await pool.query(
+      `INSERT INTO envios (proveedor_id,dias_reales,incidencia) VALUES ($1,$2,$3)`,
+      [e.proveedor_id, e.dias_reales, e.incidencia]
     );
   }
   console.log("✓ Datos de ejemplo sembrados en Neon.");

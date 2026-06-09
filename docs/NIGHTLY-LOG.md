@@ -47,7 +47,7 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
 7. ✅ **Proveedores en alerta en el resumen diario** (ya implementado, ciclo 17).
 8. ✅ **Export CSV para el asesor** (ya implementado, ciclo 16).
 9. ✅ **Proveedor + salud en el detalle de tienda** (ya implementado, ciclo 21).
-10. **Calculadora de margen en vivo** en el CRM (form que usa `margenContribucion`).
+10. ✅ **Calculadora de margen en vivo** en el CRM (ya implementada, ciclo 26).
 11. **Filtro por tienda** en embudo/alertas para el modo holding multi-tienda.
 
 ---
@@ -295,3 +295,14 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
   calidad (tests, UX menor) en vez de generar docs de relleno.
 - **Ideas creativas:** #10 calculadora de margen en vivo, #11 filtro por tienda.
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 26 — Calculadora de margen `/calculadora` · 🟢 verde
+- **Qué hice:** página client `app/calculadora/page.tsx` que reutiliza la lógica pura
+  `margenContribucion`/`margenPct`/`cumpleUmbralMargen` (sin duplicar) con inputs en
+  vivo (precio, coste, envío, % comisión, % pasarela) y veredicto de la regla de 25 €;
+  enlace en la navegación. Implementa la **idea #10**.
+- **Verificación:** `npm test` 29/29 · `npm run build` ✓ (ruta `/calculadora`) ·
+  smoke real: 200 y título presente.
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** evité importar `components/ui` en el cliente (arrastra `db`); formateo
+  inline. La lógica de margen es la MISMA que usa el resto del CRM y los tests.

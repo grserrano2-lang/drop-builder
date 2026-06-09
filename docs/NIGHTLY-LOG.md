@@ -4,12 +4,19 @@
 - **Estado global:** 🟢 verde (build OK, 18/18 tests).
 - **Rama:** `feat/nightly` (solo commits locales, sin push).
 - **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**;
-  **specs Base44 + afiliados** de la Tienda 1.
-- **En curso / siguiente:** spec de tracking, copy de emails #52-60, briefs UGC
-  #31-33, integraciones mock #82/#84. (Auditoría puntual prevista en el ciclo 5.)
+  **specs Base44 + afiliados + tracking** de la Tienda 1; auditoría + limpieza.
+- **En curso / siguiente:** copy de emails #52-60, briefs UGC #31-33, integraciones
+  mock #82/#84, generador SEO #41-42.
 - **Bloqueos (pendiente humano):** nada que me frene; lo irreversible (cuentas,
-  pagos, dominios, Neon) queda anotado para ti.
-- **Ideas creativas top:** (se irán añadiendo en las auditorías).
+  pagos, dominios, Neon, webhook Telegram) queda anotado para ti.
+- **Ideas creativas top (para que decidas):**
+  1. **Drops conmemorativos** (camisetas de efemérides/partidos, sin marcas):
+     urgencia + estacionalidad, 100% legal.
+  2. **"Diseña tu camiseta"** con la comunidad: co-creación → UGC orgánico, sentido
+     de pertenencia y valida demanda ANTES de producir.
+  3. **Panel de salud del proveedor** en el CRM (plazo real medio, % incidencias):
+     con dropshipping China el proveedor es el mayor riesgo; alertar si el plazo real
+     se desvía del prometido protege contra chargebacks.
 
 ---
 
@@ -54,3 +61,14 @@
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** dejé marcadas como activables las mejoras no aprobadas (#25 tiers,
   #27 leaderboard) por si Gonzalo las quiere; y recomiendo reconsiderar #23.
+
+### Ciclo 5 — Auditoría + spec de tracking · 🟢 verde
+- **Auditoría:** eliminado código muerto en `lib/mock.ts` (el array `eventos_embudo`
+  se generaba con un bloque enrevesado y no lo usaba nadie: las queries mock leen de
+  `embudoCounts` y `seed.ts` usa generate_series). Quitado también su import. Build y
+  tests siguen verdes (18/18) tras la limpieza.
+- **Entregable:** `specs/tracking-tienda1.md` — dataLayer, GTM+GA4, Pixel+CAPI con
+  dedup, atribución código+UTM, consent mode, hash de PII, verificación (#71-77,79).
+- **Ideas creativas:** 3, anotadas en el resumen ejecutivo (drops conmemorativos,
+  "diseña tu camiseta", panel de salud del proveedor).
+- **Commit:** checkpoint en `feat/nightly`.

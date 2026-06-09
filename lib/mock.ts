@@ -9,7 +9,6 @@ import type {
   Pedido,
   Creador,
   VentaAtribuida,
-  EventoEmbudo,
   Alerta,
   Tarea,
 } from "@/lib/types";
@@ -65,23 +64,8 @@ export const ventas_atribuidas: VentaAtribuida[] = pedidos
     };
   });
 
-export const eventos_embudo: EventoEmbudo[] = (() => {
-  const out: EventoEmbudo[] = [];
-  let id = 1;
-  for (const t of tiendas) {
-    const base = { t1: 5000, t2: 2200, t3: 1800 }[t.id] ?? 1000;
-    const counts = { vista: base, clic: Math.round(base * 0.35), atc: Math.round(base * 0.08), venta: Math.round(base * 0.02) };
-    for (const [tipo, n] of Object.entries(counts) as [EventoEmbudo["tipo"], number][]) {
-      out.push({ id: id++, tienda_id: t.id, creador_id: null, tipo, fecha: "2026-06-01" });
-      // guardamos solo un registro agregado por tipo con el conteo en `id` lógico;
-      // las queries mock leen los conteos de getEmbudoMock (abajo).
-      void n;
-    }
-  }
-  return out;
-})();
-
-// Conteos de embudo precalculados (mock) por tienda.
+// Conteos de embudo precalculados (mock) por tienda. Las queries en modo mock
+// leen de aquí directamente (no necesitamos generar filas evento a evento).
 export const embudoCounts: Record<string, { vistas: number; clics: number; atc: number; ventas: number }> = {
   t1: { vistas: 5000, clics: 1750, atc: 400, ventas: 100 },
   t2: { vistas: 2200, clics: 770, atc: 176, ventas: 30 },

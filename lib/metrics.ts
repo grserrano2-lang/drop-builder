@@ -107,3 +107,11 @@ export function roiCreador(margenGenerado: number, comisionPagada: number): numb
 export function round2(n: number): number {
   return Math.round((n + Number.EPSILON) * 100) / 100;
 }
+
+/** Semanas completas que lleva activa una tienda desde su fecha de creación.
+ *  `ahoraISO` se pasa como parámetro para que sea pura y testeable. */
+export function semanasActiva(creadaEn: string, ahoraISO: string): number {
+  const ms = Date.parse(ahoraISO) - Date.parse(creadaEn);
+  if (!Number.isFinite(ms) || ms < 0) return 0;
+  return Math.floor(ms / (7 * 24 * 60 * 60 * 1000));
+}

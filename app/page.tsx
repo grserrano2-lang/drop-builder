@@ -1,5 +1,5 @@
 import { getConsolidado } from "@/lib/queries";
-import { decisionGate } from "@/lib/metrics";
+import { decisionGate, semanasActiva } from "@/lib/metrics";
 import { eur, pct, Stat, Badge, MockBanner, estadoTone, decisionTone } from "@/components/ui";
 
 export const dynamic = "force-dynamic";
@@ -36,7 +36,7 @@ export default async function ConsolidadoPage() {
           {tiendas.map((t) => {
             const g = decisionGate({
               margenContribucionAcumulado: t.margen,
-              semanasActiva: 5,
+              semanasActiva: semanasActiva(t.tienda.creada_en, new Date().toISOString()),
               ratioChargebacks: t.ratioChargebacks,
               conversionGlobalPct: t.pedidos > 0 ? 1 : 0,
             });

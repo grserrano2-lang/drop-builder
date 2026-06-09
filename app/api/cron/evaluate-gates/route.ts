@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getConsolidado } from "@/lib/queries";
-import { decisionGate } from "@/lib/metrics";
+import { decisionGate, semanasActiva } from "@/lib/metrics";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +21,7 @@ export async function GET(req: Request) {
   }
   const { tiendas } = await getConsolidado();
   const evaluaciones = tiendas.map((t) => {
-    const semanas = 5; // TODO: calcular desde t.tienda.creada_en cuando haya histórico real
+    const semanas = semanasActiva(t.tienda.creada_en, new Date().toISOString());
     const d = decisionGate({
       margenContribucionAcumulado: t.margen,
       semanasActiva: semanas,

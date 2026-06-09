@@ -1,10 +1,11 @@
 # Registro nocturno — sesión autónoma Drop Builder
 
 ## Resumen ejecutivo (lo leerás por la mañana)
-- **Estado global:** 🟢 verde (build OK, 18/18 tests).
+- **Estado global:** 🟢 verde (build OK, 19/19 tests).
 - **Rama:** `feat/nightly` (solo commits locales, sin push).
-- **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**;
-  **specs Base44 + afiliados + tracking** de la Tienda 1; auditoría + limpieza.
+- **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**; **specs
+  Base44 + afiliados + tracking** Tienda 1; **marca** (7 nombres); **briefs UGC**;
+  **copy de emails**; **plan SEO** (30 títulos); **FAQ**; 2 auditorías + limpieza.
 - **En curso / siguiente:** copy de emails #52-60, briefs UGC #31-33, integraciones
   mock #82/#84, generador SEO #41-42. **Marca Tienda 1: candidatos listos para que
   elijas y verifiques (EUIPO/dominio).**
@@ -18,6 +19,12 @@
   3. **Panel de salud del proveedor** en el CRM (plazo real medio, % incidencias):
      con dropshipping China el proveedor es el mayor riesgo; alertar si el plazo real
      se desvía del prometido protege contra chargebacks.
+  4. **Bundle "equipación completa"** (camiseta+pantalón+medias de diseño propio)
+     como upsell de mayor AOV.
+  5. **Programa de referidos cliente→cliente** ("trae a un colega, ambos ganáis"):
+     crecimiento orgánico barato además de los creadores.
+  6. **Alerta de margen por SKU**: si un producto baja del umbral de 25 € por cambio
+     de coste/envío del proveedor, avisar (protege la regla de oro automáticamente).
 
 ---
 
@@ -109,3 +116,16 @@
 - **Verificación:** docs-only → build no afectado (18/18 en el último verde).
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** el bot SEO ya tiene cola de 30 artículos para arrancar al lanzar.
+
+### Ciclo 10 — Auditoría + FAQ · 🟢 verde
+- **Auditoría:** (1) resuelto el TODO de `semanas=5` hardcodeado en
+  evaluate-gates, daily-summary y la home: nuevo helper puro `semanasActiva()` en
+  `lib/metrics.ts` con test (ahora 19/19), usado en los 3 sitios; (2) eliminado el
+  directorio vacío `app/consolidado/` (sobrante del scaffold; el consolidado vive en
+  `page.tsx`). Build verde tras los cambios.
+- **Entregable:** `templates/soporte/tienda1/faq.md` — FAQ pública + base del agente
+  IA (envíos, tallas, pagos, devoluciones 14 días, contacto), con nota de que el
+  agente escala a humano cualquier acción con dinero (#68, #61).
+- **Ideas creativas:** 3 nuevas (bundle equipación, referidos cliente→cliente,
+  alerta de margen por SKU), en el resumen ejecutivo.
+- **Commit:** checkpoint en `feat/nightly`.

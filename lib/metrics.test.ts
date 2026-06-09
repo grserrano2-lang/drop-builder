@@ -9,7 +9,14 @@ import {
   tasasEmbudo,
   decisionGate,
   roiCreador,
+  semanasActiva,
 } from "./metrics.ts";
+
+test("semanasActiva cuenta semanas completas y nunca negativo", () => {
+  assert.equal(semanasActiva("2026-05-01", "2026-05-29T00:00:00Z"), 4);
+  assert.equal(semanasActiva("2026-05-01", "2026-05-01T00:00:00Z"), 0);
+  assert.equal(semanasActiva("2026-05-10", "2026-05-01T00:00:00Z"), 0); // futuro → 0
+});
 
 test("margenContribucion descuenta coste, envío, comisión y pasarela", () => {
   const m = margenContribucion({

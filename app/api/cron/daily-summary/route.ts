@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getConsolidado, getAlertas, getTareas } from "@/lib/queries";
-import { decisionGate } from "@/lib/metrics";
+import { decisionGate, semanasActiva } from "@/lib/metrics";
 import { contarPorEstado } from "@/lib/tasks";
 import { construirResumenDiario } from "@/lib/summary";
 
@@ -32,7 +32,7 @@ export async function GET(req: Request) {
   const tiendasResumen = tiendas.map((t) => {
     const g = decisionGate({
       margenContribucionAcumulado: t.margen,
-      semanasActiva: 5,
+      semanasActiva: semanasActiva(t.tienda.creada_en, new Date().toISOString()),
       ratioChargebacks: t.ratioChargebacks,
       conversionGlobalPct: t.pedidos > 0 ? 1 : 0,
     });

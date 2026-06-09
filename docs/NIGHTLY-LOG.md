@@ -266,3 +266,11 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
   credenciales de Base44.
 - **Verificación:** `npm test` 29/29 · `npm run build` ✓.
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 23 — Onboarding del primer creador · 🟢 verde (docs)
+- **Qué hice:** `specs/onboarding-creador-tienda1.md` — checklist de 7 fases
+  (descubrimiento por bot → outreach manual → acuerdo firmado → alta+código en Base44
+  → kit y briefs → activación y medición en el CRM → liquidación semiauto) con
+  guardrails y definición de "creador activado". Conecta todo lo ya construido.
+- **Verificación:** docs-only → build no afectado (29/29 en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.

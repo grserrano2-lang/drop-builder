@@ -274,3 +274,10 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
   guardrails y definición de "creador activado". Conecta todo lo ya construido.
 - **Verificación:** docs-only → build no afectado (29/29 en el último verde).
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 24 — Índice de specs + orden de lanzamiento · 🟢 verde (docs)
+- **Qué hice:** `specs/README.md` — índice de los 12 specs con el **orden de
+  lanzamiento de la Tienda 1** en 8 pasos (legal → marca → producto → tienda+tracking
+  → afiliados → contenido → operativa → datos) + pasos humanos y guardrails.
+- **Verificación:** docs-only → build no afectado.
+- **Commit:** checkpoint en `feat/nightly`.

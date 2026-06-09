@@ -256,3 +256,13 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
   t1→EU FastKit (bueno), t3→GuangzhouTex (critico).
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** las 3 ideas "de cruce" (#3, #7, #9) quedan implementadas en el CRM.
+
+### Ciclo 22 — Fix seed + spec puente Base44↔CRM · 🟢 verde
+- **Fix:** `scripts/seed.ts` ahora inserta `proveedor_id` en tiendas (consistencia
+  tras el ciclo 21).
+- **Entregable:** `specs/integraciones-base44-crm.md` — contrato de `/api/ingest`
+  (cabecera, body, tipos de evento y su efecto), idempotencia, seguridad y pasos
+  humanos de configuración del webhook. Prepara el cableado real cuando haya
+  credenciales de Base44.
+- **Verificación:** `npm test` 29/29 · `npm run build` ✓.
+- **Commit:** checkpoint en `feat/nightly`.

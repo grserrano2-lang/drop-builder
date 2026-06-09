@@ -19,9 +19,9 @@ const pool = new Pool({ connectionString: url });
 try {
   for (const t of tiendas) {
     await pool.query(
-      `INSERT INTO tiendas (id,nombre,nicho,estado,base44_id) VALUES ($1,$2,$3,$4,$5)
+      `INSERT INTO tiendas (id,nombre,nicho,estado,base44_id,proveedor_id) VALUES ($1,$2,$3,$4,$5,$6)
        ON CONFLICT (id) DO NOTHING`,
-      [t.id, t.nombre, t.nicho, t.estado, t.base44_id]
+      [t.id, t.nombre, t.nicho, t.estado, t.base44_id, t.proveedor_id ?? null]
     );
   }
   for (const p of productos) {

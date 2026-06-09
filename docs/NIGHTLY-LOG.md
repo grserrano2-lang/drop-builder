@@ -1,30 +1,50 @@
 # Registro nocturno — sesión autónoma Drop Builder
 
 ## Resumen ejecutivo (lo leerás por la mañana)
-- **Estado global:** 🟢 verde (build OK, 29/29 tests).
-- **Rama:** `feat/nightly` (solo commits locales, sin push).
-- **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**; **specs
-  Base44 + afiliados + tracking** Tienda 1; **marca** (7 nombres); **briefs UGC**;
-  **copy de emails**; **plan SEO** (30 títulos); **FAQ**; 2 auditorías + limpieza.
-- **En curso / siguiente:** copy de emails #52-60, briefs UGC #31-33, integraciones
-  mock #82/#84, generador SEO #41-42. **Marca Tienda 1: candidatos listos para que
-  elijas y verifiques (EUIPO/dominio).**
-- **Bloqueos (pendiente humano):** nada que me frene; lo irreversible (cuentas,
-  pagos, dominios, Neon, webhook Telegram) queda anotado para ti.
-- **Ideas creativas top (para que decidas):**
-  1. **Drops conmemorativos** (camisetas de efemérides/partidos, sin marcas):
-     urgencia + estacionalidad, 100% legal.
-  2. **"Diseña tu camiseta"** con la comunidad: co-creación → UGC orgánico, sentido
-     de pertenencia y valida demanda ANTES de producir.
-  3. **Panel de salud del proveedor** en el CRM (plazo real medio, % incidencias):
-     con dropshipping China el proveedor es el mayor riesgo; alertar si el plazo real
-     se desvía del prometido protege contra chargebacks.
-  4. **Bundle "equipación completa"** (camiseta+pantalón+medias de diseño propio)
-     como upsell de mayor AOV.
-  5. **Programa de referidos cliente→cliente** ("trae a un colega, ambos ganáis"):
-     crecimiento orgánico barato además de los creadores.
-  6. **Alerta de margen por SKU**: si un producto baja del umbral de 25 € por cambio
-     de coste/envío del proveedor, avisar (protege la regla de oro automáticamente).
+- **Estado global:** 🟢 verde — `npm run build` OK, **29/29 tests**, **20 commits** en
+  la rama `feat/nightly` (solo local, **sin push**; revísalos con `git log --oneline`).
+- **Ventana:** 20 ciclos autónomos; cada uno verificado y commiteado.
+
+### Qué construí esta noche
+**Código del CRM (todo en verde, modo mock):**
+- Páginas: consolidado `/`, `/tiendas` + `/tiendas/[id]`, `/creadores` +
+  `/creadores/[id]`, `/embudo`, `/alertas`, `/proveedores`, `/tareas` (Kanban).
+- Endpoints: `/api/health`, `/api/ingest`, crons `evaluate-gates` · `check-alerts` ·
+  `daily-summary` (con proveedores en alerta), y `/api/export` (CSV asesor).
+- Lógica pura testeada: `metrics`, `tasks`, `summary`, `supplier`, `export` (29 tests).
+- Extras: panel de salud del proveedor, helper `semanasActiva`, enlaces de descarga
+  CSV, limpieza de código muerto.
+
+**Specs de la Tienda 1 (8, en `specs/`):** base44, afiliados, tracking,
+fulfillment+stock, pagos/IOSS (LLC US→UE), soporte/RMA, marca (7 nombres), plan SEO
+(30 títulos). + decode de la referencia.
+
+**Contenido listo para usar:** briefs+guiones UGC (5 ángulos+hooks), copy final de
+9 emails, FAQ (web+IA), plantillas legales + acuerdo de creador.
+
+### Pendiente humano (lo que te desbloquea a ti)
+1. **Marca:** elegir 2-3 nombres y verificar **EUIPO + dominio + handles**.
+2. **Base44:** crear cuenta (Builder) + dominio.
+3. **Neon:** crear proyecto, pegar `DATABASE_URL`, `npm run db:migrate && db:seed`.
+4. **Stripe + PayPal** y **asesor IVA/IOSS** (caso LLC US).
+5. **Webhook Telegram** en `.env.local` para el resumen diario.
+6. **Activar las skills** (ver `skills/README.md`).
+7. ⚠️ Producto: confirmar que lo que se dropshipee **no sean réplicas** (check IP).
+
+### Próximos pasos sugeridos para los siguientes ciclos
+Spec de integraciones reales Base44↔CRM cuando des credenciales · más cobertura ·
+ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
+
+### Ideas creativas (para que decidas)
+1. **Drops conmemorativos** (efemérides/partidos, sin marcas): urgencia + estacional.
+2. **"Diseña tu camiseta"** con la comunidad: UGC orgánico + valida demanda.
+3. ✅ **Panel de salud del proveedor** (ya implementado, ciclo 13).
+4. **Bundle "equipación completa"** (camiseta+pantalón+medias) para subir AOV.
+5. **Referidos cliente→cliente** ("trae a un colega, ambos ganáis").
+6. **Alerta de margen por SKU** si baja del umbral de 25 €.
+7. ✅ **Proveedores en alerta en el resumen diario** (ya implementado, ciclo 17).
+8. ✅ **Export CSV para el asesor** (ya implementado, ciclo 16).
+9. **Proveedor + salud en el detalle de tienda** (cruce pendiente).
 
 ---
 
@@ -218,3 +238,12 @@
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** con esto los specs operativos de la Tienda 1 quedan completos
   (Base44, afiliados, tracking, fulfillment+stock, pagos/IOSS, soporte/RMA).
+
+### Ciclo 20 — Auditoría general + briefing · 🟢 verde
+- **Auditoría:** 29/29 tests, build OK; 9 páginas + 6 endpoints; schema↔mock↔seed↔
+  queries consistentes; rutas↔nav↔README al día; 8 specs de Tienda 1; 20 commits.
+  Sin inconsistencias nuevas. Corregido: las ideas 7-9 estaban mal ubicadas (dentro
+  del detalle del ciclo 10) → el **resumen ejecutivo** se reescribió como briefing
+  completo y canónico de la noche.
+- **Ideas creativas:** consolidadas las 9 en el resumen (3 ya implementadas).
+- **Commit:** checkpoint en `feat/nightly`.

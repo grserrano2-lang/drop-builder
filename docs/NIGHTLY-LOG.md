@@ -82,3 +82,12 @@
 - **Verificación:** docs-only → build no afectado (18/18 en el último verde).
 - **Commit:** checkpoint en `feat/nightly`.
 - **Pendiente humano:** elegir 2-3 favoritos y verificar EUIPO + dominio + handles.
+
+### Ciclo 7 — Briefs y guiones UGC Tienda 1 · 🟢 verde (docs)
+- **Qué hice:** `templates/creatividades/tienda1/briefs-ugc.md` — banco de 8 hooks de
+  3 s, los **5 ángulos con guion** (problema/solución, transformación, prueba social,
+  identidad, precio/regalo), plantilla de brief para creador (formato, do's & don'ts,
+  disclosure #ad, entregables) y guardrails. Parametrizado con {{CODIGO}}/{{PRODUCTO}}.
+- **Verificación:** docs-only → build no afectado (18/18 en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** listo para activar creadores en cuanto haya marca + producto definidos.

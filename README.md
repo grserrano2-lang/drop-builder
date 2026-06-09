@@ -31,7 +31,8 @@ npm run build                      # build de producción
 ```
 
 Páginas: `/` consolidado del holding · `/tiendas` y `/tiendas/[id]` ·
-`/creadores` (ROI) · `/embudo` · `/alertas`.
+`/creadores` y `/creadores/[id]` (ROI) · `/embudo` · `/alertas` ·
+`/proveedores` (salud del proveedor) · `/tareas` (Kanban).
 Endpoints: `/api/health` · `/api/ingest` (puente Base44, exige `x-ingest-token`) ·
 `/api/cron/evaluate-gates` (gate matar/escalar) · `/api/cron/check-alerts`.
 

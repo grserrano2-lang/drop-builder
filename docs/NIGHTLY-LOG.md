@@ -129,6 +129,10 @@
 - **Ideas creativas:** 3 nuevas (bundle equipación, referidos cliente→cliente,
   alerta de margen por SKU), en el resumen ejecutivo.
 - **Commit:** checkpoint en `feat/nightly`.
+  7. **Cruzar salud de proveedor con el resumen diario** (avisar si un proveedor
+     está en crítico).
+  8. **Export CSV para el asesor** (#90): endpoint con ventas/comisiones/IVA.
+  9. **En el detalle de tienda, mostrar su proveedor y su salud** (cruce útil).
 
 ### Ciclo 11 — Spec de fulfillment + sync-stock Tienda 1 · 🟢 verde (docs)
 - **Qué hice:** `specs/fulfillment-stock-tienda1.md` — ruta del pedido, enrutado al
@@ -168,4 +172,15 @@
 - **Qué hice:** actualizado `scripts/seed.ts` para sembrar también `tareas`,
   `proveedores` y `envios` (estaba desfasado respecto al schema y al mock).
 - **Verificación:** `npm run build` ✓ (type-chequea seed.ts) · `npm test` 24/24.
+- **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 15 — Auditoría general + spec de pagos/IOSS · 🟢 verde
+- **Auditoría:** verde (24/24, build OK); schema↔mock↔seed **consistentes**
+  (eventos_embudo se siembra por generate_series y se lee en neon; ingest_log es
+  auditoría); rutas↔nav **completas**. Única inconsistencia: **README desactualizado**
+  (faltaban `/tareas` y `/proveedores`) → corregido.
+- **Entregable:** `specs/pagos-impuestos-tienda1.md` — caso **LLC US → UE**: por qué
+  el IVA UE aplica igual, IOSS vía intermediario, checklist humano/IA, IVA en
+  checkout y **preguntas para el asesor**. Punto débil cubierto.
+- **Ideas creativas:** 3 nuevas (#7-9 en el resumen ejecutivo).
 - **Commit:** checkpoint en `feat/nightly`.

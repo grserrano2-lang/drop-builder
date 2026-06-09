@@ -6,7 +6,8 @@
 - **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**;
   **specs Base44 + afiliados + tracking** de la Tienda 1; auditoría + limpieza.
 - **En curso / siguiente:** copy de emails #52-60, briefs UGC #31-33, integraciones
-  mock #82/#84, generador SEO #41-42.
+  mock #82/#84, generador SEO #41-42. **Marca Tienda 1: candidatos listos para que
+  elijas y verifiques (EUIPO/dominio).**
 - **Bloqueos (pendiente humano):** nada que me frene; lo irreversible (cuentas,
   pagos, dominios, Neon, webhook Telegram) queda anotado para ti.
 - **Ideas creativas top (para que decidas):**
@@ -72,3 +73,12 @@
 - **Ideas creativas:** 3, anotadas en el resumen ejecutivo (drops conmemorativos,
   "diseña tu camiseta", panel de salud del proveedor).
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 6 — Marca e identidad Tienda 1 · 🟢 verde (docs)
+- **Qué hice:** `specs/marca-tienda1.md` — posicionamiento, tono, dirección visual y
+  paleta, **7 candidatos de nombre** con tagline (ONZE, Hincha&Co., Caño/Nutmeg,
+  Tiempo Extra, Grada Norte, Golazo Club, Dorsal 12), brief de logo para IA y
+  criterios de elección. Todos originales, sin clubes/marcas.
+- **Verificación:** docs-only → build no afectado (18/18 en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Pendiente humano:** elegir 2-3 favoritos y verificar EUIPO + dominio + handles.

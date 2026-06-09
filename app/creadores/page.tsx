@@ -21,7 +21,7 @@ export default async function CreadoresPage() {
         <tbody>
           {creadores.map((c) => (
             <tr key={c.id}>
-              <td>{c.nombre} <span style={{ color: "var(--muted)" }}>{c.handle}</span></td>
+              <td><a href={`/creadores/${c.id}`}>{c.nombre}</a> <span style={{ color: "var(--muted)" }}>{c.handle}</span></td>
               <td><code>{c.codigo}</code></td>
               <td><Badge tone={estadoTone(c.estado)}>{c.estado}</Badge></td>
               <td className="num">{eur(c.comision)}</td>

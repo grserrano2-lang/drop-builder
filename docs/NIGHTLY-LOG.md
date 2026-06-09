@@ -139,3 +139,12 @@
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** completa los specs operativos de la Tienda 1 (Base44, afiliados,
   tracking, fulfillment+stock).
+
+### Ciclo 12 — Página detalle de creador `/creadores/[id]` · 🟢 verde
+- **Qué hice:** `getCreador(id)` y `getVentasCreador(id)` en `lib/queries.ts`;
+  página `app/creadores/[id]/page.tsx` (stats de ROI/comisión/ventas + desglose de
+  ventas atribuidas, con notFound); enlace desde la lista de creadores.
+- **Verificación:** `npm test` 19/19 · `npm run build` ✓ · smoke real: `/creadores/c1`
+  → 200 con ROI, `/creadores/zzz` → 404.
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** reutilicé getCreadores() para no duplicar el cálculo de ROI.

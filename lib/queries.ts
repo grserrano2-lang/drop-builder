@@ -148,3 +148,24 @@ export async function getTareas(): Promise<Tarea[]> {
   return sql<Tarea>`SELECT id, tienda_id, titulo, descripcion, estado, prioridad, origen, creada_en
                     FROM tareas ORDER BY creada_en DESC`;
 }
+
+export async function getCreador(id: string): Promise<CreadorConRoi | null> {
+  const todos = await getCreadores();
+  return todos.find((c) => c.id === id) ?? null;
+}
+
+export interface VentaCreador {
+  pedido_id: string;
+  importe: number;
+  comision: number;
+}
+
+export async function getVentasCreador(id: string): Promise<VentaCreador[]> {
+  if (MOCK) {
+    return mock.ventas_atribuidas
+      .filter((v) => v.creador_id === id)
+      .map((v) => ({ pedido_id: v.pedido_id, importe: v.importe, comision: v.comision }));
+  }
+  return sql<VentaCreador>`SELECT pedido_id, importe, comision FROM ventas_atribuidas
+                          WHERE creador_id = ${id} ORDER BY importe DESC`;
+}

@@ -8,7 +8,10 @@ export default async function CreadoresPage() {
   return (
     <>
       <h1>Creadores</h1>
-      <p className="sub">ROI por creador = margen generado ÷ comisión pagada.</p>
+      <p className="sub">
+        ROI por creador = margen generado ÷ comisión pagada. ·{" "}
+        <a href="/api/export?tipo=comisiones">⬇ Descargar comisiones (CSV)</a>
+      </p>
       <MockBanner />
       <table>
         <thead>

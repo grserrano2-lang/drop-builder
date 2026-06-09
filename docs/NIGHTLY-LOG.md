@@ -201,3 +201,10 @@
 - **Verificación:** `npm test` 29/29 · `npm run build` ✓ · smoke real: el resumen
   muestra "🏭 Proveedores en alerta: GuangzhouTex (critico)".
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 18 — Enlaces de descarga CSV en el CRM · 🟢 verde
+- **Qué hice:** enlaces "⬇ Descargar CSV" en `/creadores` (comisiones) y `/tiendas`
+  (pedidos), conectando el export del ciclo 16 con la UI (lo hace descubrible).
+- **Verificación:** `npm run build` ✓ · smoke real: ambos enlaces presentes en sus
+  páginas (29/29 tests siguen verdes; sin cambios de lógica).
+- **Commit:** checkpoint en `feat/nightly`.

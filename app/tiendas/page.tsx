@@ -8,7 +8,10 @@ export default async function TiendasPage() {
   return (
     <>
       <h1>Tiendas</h1>
-      <p className="sub">Una fila por tienda. Clica para ver el detalle.</p>
+      <p className="sub">
+        Una fila por tienda. Clica para ver el detalle. ·{" "}
+        <a href="/api/export?tipo=pedidos">⬇ Descargar pedidos (CSV)</a>
+      </p>
       <MockBanner />
       <table>
         <thead>

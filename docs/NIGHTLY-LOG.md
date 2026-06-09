@@ -208,3 +208,13 @@
 - **Verificación:** `npm run build` ✓ · smoke real: ambos enlaces presentes en sus
   páginas (29/29 tests siguen verdes; sin cambios de lógica).
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 19 — Spec de soporte y devoluciones (RMA) · 🟢 verde (docs)
+- **Qué hice:** `specs/soporte-devoluciones-tienda1.md` — canales+SLA, alcance del
+  agente IA (solo lectura, escala dinero), flujo RMA, **matiz dropshipping** (a menudo
+  reembolso sin retorno físico por coste), devolución 14 días, anti-chargeback,
+  casos de no-devolución y métricas (CSAT, % devoluciones).
+- **Verificación:** docs-only → build no afectado (29/29 en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** con esto los specs operativos de la Tienda 1 quedan completos
+  (Base44, afiliados, tracking, fulfillment+stock, pagos/IOSS, soporte/RMA).

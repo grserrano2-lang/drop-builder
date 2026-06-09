@@ -5,7 +5,8 @@
 import { MOCK, sql } from "@/lib/db";
 import * as mock from "@/lib/mock";
 import { round2, tasasEmbudo, roiCreador } from "@/lib/metrics";
-import type { Tienda, Producto, Alerta, Tarea } from "@/lib/types";
+import { saludProveedor, type SaludProveedor } from "@/lib/supplier";
+import type { Tienda, Producto, Alerta, Tarea, Proveedor, Envio } from "@/lib/types";
 
 export interface ResumenTienda {
   tienda: Tienda;
@@ -168,4 +169,25 @@ export async function getVentasCreador(id: string): Promise<VentaCreador[]> {
   }
   return sql<VentaCreador>`SELECT pedido_id, importe, comision FROM ventas_atribuidas
                           WHERE creador_id = ${id} ORDER BY importe DESC`;
+}
+
+export interface ProveedorSalud {
+  proveedor: Proveedor;
+  salud: SaludProveedor;
+}
+
+export async function getProveedoresSalud(): Promise<ProveedorSalud[]> {
+  let proveedores: Proveedor[];
+  let envios: Envio[];
+  if (MOCK) {
+    proveedores = mock.proveedores;
+    envios = mock.envios;
+  } else {
+    proveedores = await sql<Proveedor>`SELECT id, nombre, pais, plazo_prometido_dias FROM proveedores`;
+    envios = await sql<Envio>`SELECT proveedor_id, dias_reales, incidencia FROM envios WHERE dias_reales IS NOT NULL`;
+  }
+  return proveedores.map((p) => ({
+    proveedor: p,
+    salud: saludProveedor(envios.filter((e) => e.proveedor_id === p.id), p.plazo_prometido_dias),
+  }));
 }

@@ -11,6 +11,8 @@ import type {
   VentaAtribuida,
   Alerta,
   Tarea,
+  Proveedor,
+  Envio,
 } from "@/lib/types";
 
 export const tiendas: Tienda[] = [
@@ -86,4 +88,15 @@ export const tareas: Tarea[] = [
   { id: "tk4", tienda_id: null, titulo: "Banco de 5 ángulos UGC + hooks", descripcion: "Guiones por ángulo (#31, #32).", estado: "backlog", prioridad: "media", origen: "bot", creada_en: "2026-06-09" },
   { id: "tk5", tienda_id: "t2", titulo: "Spec de tracking (Pixel+CAPI, GA4)", descripcion: "dataLayer y atribución por creador (#71-77).", estado: "backlog", prioridad: "media", origen: "bot", creada_en: "2026-06-09" },
   { id: "tk6", tienda_id: null, titulo: "Plantilla clonable de tienda", descripcion: "Alta de tienda nueva en 1 paso (#88).", estado: "backlog", prioridad: "baja", origen: "bot", creada_en: "2026-06-09" },
+];
+
+export const proveedores: Proveedor[] = [
+  { id: "pr1", nombre: "EU FastKit", pais: "ES/UE", plazo_prometido_dias: 7 },
+  { id: "pr2", nombre: "GuangzhouTex", pais: "CN", plazo_prometido_dias: 7 },
+];
+
+// Envíos de muestra: pr1 cumple (~7 días, sin incidencias); pr2 se desvía mucho.
+export const envios: Envio[] = [
+  ...[7, 8, 6, 7, 9].map((d) => ({ proveedor_id: "pr1", dias_reales: d, incidencia: false })),
+  ...[18, 21, 16, 22, 19].map((d, i) => ({ proveedor_id: "pr2", dias_reales: d, incidencia: i % 2 === 0 })),
 ];

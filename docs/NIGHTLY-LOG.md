@@ -1,7 +1,7 @@
 # Registro nocturno — sesión autónoma Drop Builder
 
 ## Resumen ejecutivo (lo leerás por la mañana)
-- **Estado global:** 🟢 verde (build OK, 19/19 tests).
+- **Estado global:** 🟢 verde (build OK, 24/24 tests).
 - **Rama:** `feat/nightly` (solo commits locales, sin push).
 - **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**; **specs
   Base44 + afiliados + tracking** Tienda 1; **marca** (7 nombres); **briefs UGC**;
@@ -148,3 +148,13 @@
   → 200 con ROI, `/creadores/zzz` → 404.
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** reutilicé getCreadores() para no duplicar el cálculo de ROI.
+
+### Ciclo 13 — Panel de salud del proveedor `/proveedores` · 🟢 verde
+- **Qué hice:** tablas `proveedores` y `envios` en el schema; tipos `Proveedor`/
+  `Envio`; lógica pura `lib/supplier.ts` (`saludProveedor`: plazo real medio,
+  desviación, % incidencias, estado bueno/riesgo/crítico) con `lib/supplier.test.ts`;
+  datos mock; `getProveedoresSalud()` (mock+neon); página `/proveedores` + nav.
+  Implementa la **idea creativa #3** (riesgo clave del dropshipping).
+- **Verificación:** `npm test` 24/24 · `npm run build` ✓ · smoke real: `/proveedores`
+  → 200 (EU FastKit→bueno, GuangzhouTex→crítico).
+- **Commit:** checkpoint en `feat/nightly`.

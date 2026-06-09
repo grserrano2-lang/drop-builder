@@ -122,3 +122,20 @@ CREATE TABLE IF NOT EXISTS tareas (
 );
 CREATE INDEX IF NOT EXISTS idx_tareas_estado ON tareas(estado);
 CREATE INDEX IF NOT EXISTS idx_tareas_tienda ON tareas(tienda_id);
+
+-- --- PROVEEDORES + ENVÍOS (salud del proveedor; riesgo clave en dropshipping) --
+CREATE TABLE IF NOT EXISTS proveedores (
+  id                   TEXT PRIMARY KEY,
+  nombre               TEXT NOT NULL,
+  pais                 TEXT,
+  plazo_prometido_dias INTEGER NOT NULL DEFAULT 7
+);
+CREATE TABLE IF NOT EXISTS envios (
+  id           BIGSERIAL PRIMARY KEY,
+  pedido_id    TEXT REFERENCES pedidos(id) ON DELETE CASCADE,
+  proveedor_id TEXT REFERENCES proveedores(id) ON DELETE SET NULL,
+  dias_reales  INTEGER,                       -- días puerta a puerta reales
+  incidencia   BOOLEAN NOT NULL DEFAULT false,
+  creado_en    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_envios_proveedor ON envios(proveedor_id);

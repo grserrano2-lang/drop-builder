@@ -71,6 +71,19 @@ export interface Alerta {
   creada_en: string;
 }
 
+export interface Proveedor {
+  id: string;
+  nombre: string;
+  pais: string | null;
+  plazo_prometido_dias: number;
+}
+
+export interface Envio {
+  proveedor_id: string;
+  dias_reales: number;
+  incidencia: boolean;
+}
+
 export type EstadoTarea = "backlog" | "en_progreso" | "hecho";
 export type PrioridadTarea = "alta" | "media" | "baja";
 export interface Tarea {

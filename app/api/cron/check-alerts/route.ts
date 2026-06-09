@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { MOCK, sql } from "@/lib/db";
-import { getConsolidado } from "@/lib/queries";
+import { getConsolidado, getProductosTodos } from "@/lib/queries";
+import { margenContribucion } from "@/lib/metrics";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,7 @@ export const dynamic = "force-dynamic";
 // =========================================================================
 const UMBRAL_STOCK = 10;
 const UMBRAL_CHARGEBACK = 0.01;
+const UMBRAL_MARGEN = 25; // regla de oro: margen de contribución >= 25 €
 
 function autorizado(req: Request): boolean {
   const secret = process.env.CRON_SECRET;
@@ -36,8 +38,25 @@ export async function GET(req: Request) {
     }
   }
 
+  // Margen por SKU: alerta si un producto no llega al umbral de 25 € (#6).
+  const productos = await getProductosTodos();
+  for (const p of productos) {
+    const m = margenContribucion({
+      precioVenta: p.precio, coste: p.coste, envio: 5,
+      pctComisionCreador: 0.15, pctPasarela: 0.025,
+    });
+    if (m < UMBRAL_MARGEN) {
+      detectadas.push({
+        tienda_id: p.tienda_id,
+        tipo: "margen_bajo",
+        severidad: "aviso",
+        mensaje: `${p.nombre}: margen ${m.toFixed(2)} € < ${UMBRAL_MARGEN} € (revisa precio/coste/envío).`,
+      });
+    }
+  }
+
   if (MOCK) {
-    return NextResponse.json({ ok: true, mode: "mock", detectadas, nota: `Umbral stock ${UMBRAL_STOCK}, chargeback ${UMBRAL_CHARGEBACK}` });
+    return NextResponse.json({ ok: true, mode: "mock", detectadas, nota: `Umbrales: stock ${UMBRAL_STOCK}, chargeback ${UMBRAL_CHARGEBACK}, margen ${UMBRAL_MARGEN}€` });
   }
 
   // Stock bajo/agotado desde la DB.

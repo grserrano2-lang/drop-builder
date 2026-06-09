@@ -87,6 +87,11 @@ export async function getProductos(tiendaId: string): Promise<Producto[]> {
   return sql<Producto>`SELECT id, tienda_id, nombre, precio, coste, stock FROM productos WHERE tienda_id = ${tiendaId} ORDER BY nombre`;
 }
 
+export async function getProductosTodos(): Promise<Producto[]> {
+  if (MOCK) return mock.productos;
+  return sql<Producto>`SELECT id, tienda_id, nombre, precio, coste, stock FROM productos ORDER BY tienda_id, nombre`;
+}
+
 export interface CreadorConRoi {
   id: string; nombre: string; handle: string | null; codigo: string;
   pct_comision: number; estado: string; ventas: number; comision: number; roi: number;

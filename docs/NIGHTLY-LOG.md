@@ -1,11 +1,12 @@
 # Registro nocturno — sesión autónoma Drop Builder
 
 ## Resumen ejecutivo (lo leerás por la mañana)
-- **Estado global:** 🟢 verde — `npm run build` OK, **29/29 tests**, **25 commits** en
+- **Estado global:** 🟢 verde — `npm run build` OK, **29/29 tests**, **28 commits** en
   la rama `feat/nightly` (solo local, **sin push**; revísalos con `git log --oneline`).
-- **Ventana:** 25 ciclos autónomos; cada uno verificado y commiteado. El grueso de lo
-  construible **sin credenciales ya está hecho**: lo que queda de alto valor depende
-  de pasos humanos (ver abajo), así que los próximos ciclos endurecen calidad.
+- **🏁 SESIÓN CERRADA tras 28 ciclos.** Se agotó el trabajo construible sin
+  credenciales; lo que queda de valor es human-gated (ver "Pendiente humano"). Dejé de
+  reprogramar para no gastar tokens en relleno. Para retomar: dame credenciales
+  (Neon/Base44) o dime qué priorizar.
 
 ### Qué construí esta noche
 **Código del CRM (todo en verde, modo mock):**
@@ -43,7 +44,7 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
 3. ✅ **Panel de salud del proveedor** (ya implementado, ciclo 13).
 4. **Bundle "equipación completa"** (camiseta+pantalón+medias) para subir AOV.
 5. **Referidos cliente→cliente** ("trae a un colega, ambos ganáis").
-6. **Alerta de margen por SKU** si baja del umbral de 25 €.
+6. ✅ **Alerta de margen por SKU** (ya implementada, ciclo 28).
 7. ✅ **Proveedores en alerta en el resumen diario** (ya implementado, ciclo 17).
 8. ✅ **Export CSV para el asesor** (ya implementado, ciclo 16).
 9. ✅ **Proveedor + salud en el detalle de tienda** (ya implementado, ciclo 21).
@@ -314,3 +315,13 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
 - **Verificación:** `npm test` 29/29 · `npm run build` ✓ · smoke real: el filtro
   reduce las filas (todas > t3 > t1).
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 28 — Alerta de margen por SKU + cierre · 🟢 verde
+- **Qué hice:** `getProductosTodos()` en queries; `/api/cron/check-alerts` evalúa el
+  margen de cada producto con `margenContribucion` (reutilizada) y genera alerta
+  `margen_bajo` si no llega a 25 €. Implementa la **idea #6**.
+- **Verificación:** `npm test` 29/29 · `npm run build` ✓ · smoke real: detecta 3
+  productos por debajo de 25 € (Alfa 2 18,67€, Beta 1 23,92€, Gamma 1 12,54€).
+- **Commit:** checkpoint en `feat/nightly`.
+- **🏁 Cierre:** valorado que no queda trabajo construible de valor sin credenciales;
+  dejo de reprogramar. Todas las ideas de código (#3,#6,#7,#8,#9,#10,#11) implementadas.

@@ -129,3 +129,13 @@
 - **Ideas creativas:** 3 nuevas (bundle equipación, referidos cliente→cliente,
   alerta de margen por SKU), en el resumen ejecutivo.
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 11 — Spec de fulfillment + sync-stock Tienda 1 · 🟢 verde (docs)
+- **Qué hice:** `specs/fulfillment-stock-tienda1.md` — ruta del pedido, enrutado al
+  proveedor, tracking automático (SLA <48 h), incidencias (estricto al validar /
+  rápido al resolver con aviso anti-chargeback), devolución 14 días; y sync de stock
+  para dropshipping (mapeo por variante, regla de agotado, alertas). Enganches al CRM.
+- **Verificación:** docs-only → build no afectado (19/19 en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** completa los specs operativos de la Tienda 1 (Base44, afiliados,
+  tracking, fulfillment+stock).

@@ -1,9 +1,11 @@
 # Registro nocturno — sesión autónoma Drop Builder
 
 ## Resumen ejecutivo (lo leerás por la mañana)
-- **Estado global:** 🟢 verde — `npm run build` OK, **29/29 tests**, **20 commits** en
+- **Estado global:** 🟢 verde — `npm run build` OK, **29/29 tests**, **25 commits** en
   la rama `feat/nightly` (solo local, **sin push**; revísalos con `git log --oneline`).
-- **Ventana:** 20 ciclos autónomos; cada uno verificado y commiteado.
+- **Ventana:** 25 ciclos autónomos; cada uno verificado y commiteado. El grueso de lo
+  construible **sin credenciales ya está hecho**: lo que queda de alto valor depende
+  de pasos humanos (ver abajo), así que los próximos ciclos endurecen calidad.
 
 ### Qué construí esta noche
 **Código del CRM (todo en verde, modo mock):**
@@ -44,7 +46,9 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
 6. **Alerta de margen por SKU** si baja del umbral de 25 €.
 7. ✅ **Proveedores en alerta en el resumen diario** (ya implementado, ciclo 17).
 8. ✅ **Export CSV para el asesor** (ya implementado, ciclo 16).
-9. **Proveedor + salud en el detalle de tienda** (cruce pendiente).
+9. ✅ **Proveedor + salud en el detalle de tienda** (ya implementado, ciclo 21).
+10. **Calculadora de margen en vivo** en el CRM (form que usa `margenContribucion`).
+11. **Filtro por tienda** en embudo/alertas para el modo holding multi-tienda.
 
 ---
 
@@ -280,4 +284,14 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
   lanzamiento de la Tienda 1** en 8 pasos (legal → marca → producto → tienda+tracking
   → afiliados → contenido → operativa → datos) + pasos humanos y guardrails.
 - **Verificación:** docs-only → build no afectado.
+- **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 25 — Auditoría general · 🟢 verde
+- **Auditoría:** 29/29, build OK, árbol git limpio; 25 commits, 9 páginas, 6
+  endpoints, 13 specs, 5 módulos puros testeados. Consistencia schema/mock/seed/
+  queries/nav/README confirmada. **Sin inconsistencias.**
+- **Observación:** el trabajo construible sin credenciales está prácticamente
+  agotado; lo de mayor valor restante es human-gated. Próximos ciclos: endurecer
+  calidad (tests, UX menor) en vez de generar docs de relleno.
+- **Ideas creativas:** #10 calculadora de margen en vivo, #11 filtro por tienda.
 - **Commit:** checkpoint en `feat/nightly`.

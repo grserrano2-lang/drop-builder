@@ -100,3 +100,12 @@
 - **Verificación:** docs-only → build no afectado (18/18 en el último verde).
 - **Commit:** checkpoint en `feat/nightly`.
 - **Recordatorio:** sin SPF/DKIM (#51) estos emails caen en spam; lo repito en el pie.
+
+### Ciclo 9 — Plan del motor SEO Tienda 1 · 🟢 verde (docs)
+- **Qué hice:** `specs/seo-plan-tienda1.md` — 5 clusters por intención con **30
+  títulos long-tail listos** (genéricos, sin clubes/marcas), plantilla de artículo
+  (con enlazado interno y schema), reglas operativas (cadencia 1/día, multi-idioma,
+  pilar, refresh, estacional) y guardrails.
+- **Verificación:** docs-only → build no afectado (18/18 en el último verde).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** el bot SEO ya tiene cola de 30 artículos para arrancar al lanzar.

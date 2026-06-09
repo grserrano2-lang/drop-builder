@@ -191,3 +191,34 @@ export async function getProveedoresSalud(): Promise<ProveedorSalud[]> {
     salud: saludProveedor(envios.filter((e) => e.proveedor_id === p.id), p.plazo_prometido_dias),
   }));
 }
+
+export interface PedidoExport extends Record<string, string | number> {
+  pedido: string; tienda: string; importe: number; coste: number; estado: string; fecha: string;
+}
+
+export async function getPedidosExport(): Promise<PedidoExport[]> {
+  if (MOCK) {
+    return mock.pedidos.map((o) => ({
+      pedido: o.id, tienda: o.tienda_id, importe: round2(o.importe), coste: round2(o.coste_total),
+      estado: o.estado, fecha: o.fecha?.slice(0, 10) ?? o.fecha,
+    }));
+  }
+  return sql<PedidoExport>`SELECT id AS pedido, tienda_id AS tienda, importe, coste_total AS coste,
+    estado, to_char(fecha,'YYYY-MM-DD') AS fecha FROM pedidos ORDER BY fecha DESC`;
+}
+
+export interface ComisionExport extends Record<string, string | number> {
+  creador: string; codigo: string; pedido: string; importe: number; comision: number;
+}
+
+export async function getComisionesExport(): Promise<ComisionExport[]> {
+  if (MOCK) {
+    return mock.ventas_atribuidas.map((v) => {
+      const c = mock.creadores.find((x) => x.id === v.creador_id);
+      return { creador: c?.nombre ?? v.creador_id, codigo: c?.codigo ?? "", pedido: v.pedido_id, importe: v.importe, comision: v.comision };
+    });
+  }
+  return sql<ComisionExport>`SELECT c.nombre AS creador, c.codigo, v.pedido_id AS pedido,
+    v.importe, v.comision FROM ventas_atribuidas v JOIN creadores c ON c.id = v.creador_id
+    ORDER BY v.comision DESC`;
+}

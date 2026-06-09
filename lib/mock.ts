@@ -16,9 +16,9 @@ import type {
 } from "@/lib/types";
 
 export const tiendas: Tienda[] = [
-  { id: "t1", nombre: "Tienda Alfa", nicho: "hogar", estado: "escalar", base44_id: "b44_alfa", creada_en: "2026-04-20" },
-  { id: "t2", nombre: "Tienda Beta", nicho: "fitness", estado: "evaluando", base44_id: "b44_beta", creada_en: "2026-05-15" },
-  { id: "t3", nombre: "Tienda Gamma", nicho: "mascotas", estado: "matar", base44_id: "b44_gamma", creada_en: "2026-05-01" },
+  { id: "t1", nombre: "Tienda Alfa", nicho: "hogar", estado: "escalar", base44_id: "b44_alfa", proveedor_id: "pr1", creada_en: "2026-04-20" },
+  { id: "t2", nombre: "Tienda Beta", nicho: "fitness", estado: "evaluando", base44_id: "b44_beta", proveedor_id: "pr2", creada_en: "2026-05-15" },
+  { id: "t3", nombre: "Tienda Gamma", nicho: "mascotas", estado: "matar", base44_id: "b44_gamma", proveedor_id: "pr2", creada_en: "2026-05-01" },
 ];
 
 export const productos: Producto[] = [

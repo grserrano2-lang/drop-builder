@@ -14,6 +14,7 @@ export interface Tienda {
   nicho: string | null;
   estado: EstadoTienda;
   base44_id: string | null;
+  proveedor_id?: string | null;
   creada_en: string;
 }
 

@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS tiendas (
   estado       TEXT NOT NULL DEFAULT 'activa'
                CHECK (estado IN ('activa', 'pausada', 'escalar', 'matar', 'evaluando')),
   base44_id    TEXT,                       -- id de la tienda en Base44
+  proveedor_id TEXT,                        -- proveedor principal (FK lógica a proveedores)
   creada_en    TIMESTAMPTZ NOT NULL DEFAULT now(),
   actualizada_en TIMESTAMPTZ NOT NULL DEFAULT now()
 );

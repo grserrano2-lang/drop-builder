@@ -247,3 +247,12 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
   completo y canónico de la noche.
 - **Ideas creativas:** consolidadas las 9 en el resumen (3 ya implementadas).
 - **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 21 — Proveedor y su salud en el detalle de tienda · 🟢 verde
+- **Qué hice:** campo `proveedor_id` en tiendas (schema + tipo + mock); el detalle
+  `/tiendas/[id]` ahora cruza `getProveedoresSalud()` y muestra el proveedor de la
+  tienda con su estado, plazo real, desviación e incidencias. Implementa la **idea #9**.
+- **Verificación:** `npm test` 29/29 · `npm run build` ✓ · smoke real:
+  t1→EU FastKit (bueno), t3→GuangzhouTex (critico).
+- **Commit:** checkpoint en `feat/nightly`.
+- **Notas:** las 3 ideas "de cruce" (#3, #7, #9) quedan implementadas en el CRM.

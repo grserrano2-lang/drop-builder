@@ -10,6 +10,7 @@ export interface ResumenInput {
   alertasCriticas: string[];
   alertasAbiertas: number;
   tareas: { backlog: number; en_progreso: number; hecho: number };
+  proveedoresCriticos?: string[]; // proveedores en estado crítico/riesgo
 }
 
 const eur = (n: number) => `${n.toFixed(2)} €`;
@@ -43,6 +44,12 @@ export function construirResumenDiario(i: ResumenInput): { texto: string; lineas
     for (const a of i.alertasCriticas) lineas.push(`  - ${a}`);
   } else {
     lineas.push(`✅ Sin alertas críticas (${i.alertasAbiertas} abiertas en total).`);
+  }
+
+  const provCrit = i.proveedoresCriticos ?? [];
+  if (provCrit.length > 0) {
+    lineas.push("");
+    lineas.push(`🏭 Proveedores en alerta: ${provCrit.join(", ")}`);
   }
 
   lineas.push("");

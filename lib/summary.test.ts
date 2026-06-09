@@ -42,3 +42,10 @@ test("incluye el conteo de tareas", () => {
   const { texto } = construirResumenDiario(base);
   assert.match(texto, /5 backlog · 2 en progreso · 8 hechas/);
 });
+
+test("lista proveedores en alerta si los hay, y los omite si no", () => {
+  const sin = construirResumenDiario(base);
+  assert.doesNotMatch(sin.texto, /Proveedores en alerta/);
+  const con = construirResumenDiario({ ...base, proveedoresCriticos: ["GuangzhouTex"] });
+  assert.match(con.texto, /Proveedores en alerta: GuangzhouTex/);
+});

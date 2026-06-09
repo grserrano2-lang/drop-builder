@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getConsolidado, getAlertas, getTareas } from "@/lib/queries";
+import { getConsolidado, getAlertas, getTareas, getProveedoresSalud } from "@/lib/queries";
 import { decisionGate, semanasActiva } from "@/lib/metrics";
 import { contarPorEstado } from "@/lib/tasks";
 import { construirResumenDiario } from "@/lib/summary";
@@ -23,11 +23,15 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "no autorizado" }, { status: 401 });
   }
 
-  const [{ tiendas, holding }, alertas, tareas] = await Promise.all([
+  const [{ tiendas, holding }, alertas, tareas, proveedores] = await Promise.all([
     getConsolidado(),
     getAlertas(),
     getTareas(),
+    getProveedoresSalud(),
   ]);
+  const proveedoresCriticos = proveedores
+    .filter((p) => p.salud.estado === "critico" || p.salud.estado === "riesgo")
+    .map((p) => `${p.proveedor.nombre} (${p.salud.estado})`);
 
   const tiendasResumen = tiendas.map((t) => {
     const g = decisionGate({
@@ -47,6 +51,7 @@ export async function GET(req: Request) {
     alertasCriticas: abiertas.filter((a) => a.severidad === "critica").map((a) => a.mensaje),
     alertasAbiertas: abiertas.length,
     tareas: contarPorEstado(tareas),
+    proveedoresCriticos,
   });
 
   // Envío opcional al webhook (Telegram/Slack) si está configurado.

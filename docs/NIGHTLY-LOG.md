@@ -1,7 +1,7 @@
 # Registro nocturno — sesión autónoma Drop Builder
 
 ## Resumen ejecutivo (lo leerás por la mañana)
-- **Estado global:** 🟢 verde (build OK, 28/28 tests).
+- **Estado global:** 🟢 verde (build OK, 29/29 tests).
 - **Rama:** `feat/nightly` (solo commits locales, sin push).
 - **Completado esta noche:** #81 **Kanban CRM**; #87 **resumen diario**; **specs
   Base44 + afiliados + tracking** Tienda 1; **marca** (7 nombres); **briefs UGC**;
@@ -192,4 +192,12 @@
   Implementa la **idea #8** (#90 export contable). Pulido: redondeo a 2 decimales.
 - **Verificación:** `npm test` 28/28 · `npm run build` ✓ · smoke real: pedidos.csv y
   comisiones.csv correctos, tipo inválido → 400, coste sin ruido de float.
+- **Commit:** checkpoint en `feat/nightly`.
+
+### Ciclo 17 — Proveedores en alerta en el resumen diario · 🟢 verde
+- **Qué hice:** campo opcional `proveedoresCriticos` en `construirResumenDiario`
+  (+ test) y la ruta `daily-summary` ahora cruza `getProveedoresSalud()` y añade los
+  proveedores en estado crítico/riesgo al mensaje de Telegram. Implementa la **idea #7**.
+- **Verificación:** `npm test` 29/29 · `npm run build` ✓ · smoke real: el resumen
+  muestra "🏭 Proveedores en alerta: GuangzhouTex (critico)".
 - **Commit:** checkpoint en `feat/nightly`.

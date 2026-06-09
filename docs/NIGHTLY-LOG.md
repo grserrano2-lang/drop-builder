@@ -48,7 +48,7 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
 8. ✅ **Export CSV para el asesor** (ya implementado, ciclo 16).
 9. ✅ **Proveedor + salud en el detalle de tienda** (ya implementado, ciclo 21).
 10. ✅ **Calculadora de margen en vivo** en el CRM (ya implementada, ciclo 26).
-11. **Filtro por tienda** en embudo/alertas para el modo holding multi-tienda.
+11. ✅ **Filtro por tienda en /alertas** (ya implementado, ciclo 27).
 
 ---
 
@@ -306,3 +306,11 @@ ideas #4/#5 (bundle, referidos) · onboarding del primer creador.
 - **Commit:** checkpoint en `feat/nightly`.
 - **Notas:** evité importar `components/ui` en el cliente (arrastra `db`); formateo
   inline. La lógica de margen es la MISMA que usa el resto del CRM y los tests.
+
+### Ciclo 27 — Filtro por tienda en /alertas · 🟢 verde
+- **Qué hice:** `/alertas` admite `?tienda=<id>` con chips de filtro (Todas + cada
+  tienda), reutilizando `getAlertas` + `getConsolidado`; estado vacío cuando no hay
+  alertas para el filtro. Implementa la **idea #11** (modo holding multi-tienda).
+- **Verificación:** `npm test` 29/29 · `npm run build` ✓ · smoke real: el filtro
+  reduce las filas (todas > t3 > t1).
+- **Commit:** checkpoint en `feat/nightly`.
